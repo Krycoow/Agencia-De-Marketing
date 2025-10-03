@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zion Marketing Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00d4ff;
+            --accent-color: #00ff88;
+            --dark-bg: #000000;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            --gradient-accent: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            --neon-glow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 60px #00d4ff;
+            --neon-accent: 0 0 20px #00ff88, 0 0 40px #00ff88, 0 0 60px #00ff88;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 30%, rgba(0, 212, 255, 0.02) 50%, transparent 70%),
+                linear-gradient(-45deg, transparent 30%, rgba(0, 255, 136, 0.02) 50%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Partículas flotantes */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Líneas de energía */
+        .energy-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .energy-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: energyFlow 4s linear infinite;
+        }
+
+        @keyframes energyFlow {
+            0% { transform: translateX(-100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100vw); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoGlow 3s ease-in-out infinite alternate;
+            text-shadow: var(--neon-glow);
+            position: relative;
+            line-height: 1;
+        }
+
+        .logo::before {
+            content: 'ZION';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: blur(1px);
+            opacity: 0.5;
+            animation: logoBlur 2s ease-in-out infinite alternate;
+        }
+
+        .logo-subtitle {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-top: -2px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            animation: subtitleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtitleGlow {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 10px #00d4ff; }
+            100% { text-shadow: var(--neon-glow); }
+        }
+
+        @keyframes logoBlur {
+            0% { filter: blur(1px); opacity: 0.5; }
+            100% { filter: blur(2px); opacity: 0.3; }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 0.1;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 12rem 0 8rem;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-social {
+            position: absolute;
+            right: -8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .hero-social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 136, 0.1) 100%);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .hero-social-icon:hover::before {
+            left: 100%;
+        }
+
+        .hero-social-icon:hover {
+            transform: translateY(-5px) scale(1.15);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+        }
+
+        .hero-social-icon i {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Colores específicos para cada red social en hero */
+        .hero-social-icon:nth-child(1):hover {
+            color: #E4405F;
+            border-color: #E4405F;
+            box-shadow: 0 15px 35px rgba(228, 64, 95, 0.4);
+        }
+
+        .hero-social-icon:nth-child(2):hover {
+            color: #EA4335;
+            border-color: #EA4335;
+            box-shadow: 0 15px 35px rgba(234, 67, 53, 0.4);
+        }
+
+        .hero-social-icon:nth-child(3):hover {
+            color: #0077B5;
+            border-color: #0077B5;
+            box-shadow: 0 15px 35px rgba(0, 119, 181, 0.4);
+        }
+
+        .hero-social-icon:nth-child(4):hover {
+            color: #333;
+            border-color: #333;
+            box-shadow: 0 15px 35px rgba(51, 51, 51, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            text-shadow: var(--neon-glow);
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: highlightPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 20px #00d4ff; }
+            100% { text-shadow: var(--neon-glow); }
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--gradient-primary);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        /* Services */
+        .services {
+            padding: 12rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+            animation: servicesGlow 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes servicesGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4.5rem;
+            margin-bottom: 6rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titlePulse 3s ease-in-out infinite;
+            text-shadow: var(--neon-glow);
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3), var(--neon-glow);
+        }
+
+        .service-card i {
+            font-size: 4rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            animation: iconFloat 3s ease-in-out infinite;
+            text-shadow: var(--neon-glow);
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 12rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .reviews::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+            animation: reviewsGlow 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes reviewsGlow {
+            0% { opacity: 0.4; }
+            100% { opacity: 0.9; }
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .review-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 3.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            min-height: 300px;
+        }
+
+        .review-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .review-card:hover::before {
+            left: 100%;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3), var(--neon-glow);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 1rem;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            animation: avatarPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .review-info h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .review-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .review-rating {
+            margin-left: auto;
+            color: gold;
+            font-size: 1.1rem;
+            animation: starTwinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .review-content p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .review-service {
+            margin-top: 1.5rem;
+            text-align: right;
+        }
+
+        .review-service span {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 12rem 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-item span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .whatsapp-info {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .whatsapp-info h4 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .whatsapp-info p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Stars Animation */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .star-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+            box-shadow: 0 0 3px #fff;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 6px #00d4ff, 0 0 12px rgba(0, 212, 255, 0.5);
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 8px #00ff88, 0 0 16px rgba(0, 255, 136, 0.5);
+        }
+
+        .shooting-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+            transform: translateX(-100px);
+        }
+
+        @keyframes twinkle {
+            0% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes shootingStar {
+            0% {
+                transform: translateX(-100px) translateY(-100px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .shooting-star.animate {
+            animation: shootingStar 3s linear forwards;
+        }
+
+        @keyframes starParallax {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+
+        .star.parallax {
+            animation: starParallax 4s ease-in-out infinite alternate;
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 4rem;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.5rem;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #000 0%, #111 100%);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+
+        .footer-brand h3 {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .footer-credits {
+            text-align: right;
+        }
+
+        .footer-credits p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .krydev-credit {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.1rem;
+            animation: krydevGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes krydevGlow {
+            0% { text-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(0, 255, 136, 0.8); }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .footer-credits {
+                text-align: center;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #111;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            float: right;
+        }
+
+        .chat-message {
+            background: #222;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            animation: messageSlideIn 0.3s ease-out;
+        }
+
+        .chat-message.client-message {
+            border-left-color: #00ff88;
+            background: rgba(0, 212, 255, 0.1);
+            margin-left: 2rem;
+        }
+
+        .chat-message.admin-message {
+            border-left-color: #00d4ff;
+            background: rgba(0, 255, 136, 0.1);
+            margin-right: 2rem;
+        }
+
+        .message-content {
+            margin-bottom: 0.5rem;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            color: #999;
+            text-align: right;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #222;
+            color: #fff;
+        }
+
+        .chat-input button {
+            padding: 0.75rem 1.5rem;
+            background: #00d4ff;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-social {
+                right: -4rem;
+                gap: 1rem;
+            }
+
+            .service-card {
+                padding: 2.5rem 2rem;
+                min-height: 350px;
+            }
+
+            .service-card i {
+                font-size: 3.5rem;
+            }
+
+            .service-card h3 {
+                font-size: 1.6rem;
+            }
+
+            .service-card p {
+                font-size: 1rem;
+            }
+
+            .hero-social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-social {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 3rem;
+                gap: 0.8rem;
+            }
+        }
+
+        /* Floating Chat Button */
+        .floating-chat-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(100px);
+            visibility: hidden;
+        }
+
+        .floating-chat-btn.show {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .floating-chat-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.6);
+        }
+
+        .floating-chat-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: chatPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes chatPulse {
+            0% { 
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+            100% { 
+                transform: scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        .chat-notification {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: notificationBounce 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes notificationBounce {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .chat-notification.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .floating-chat-btn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animaciones para notificaciones */
+        @keyframes notificationSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes notificationSlideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.8);
+            }
+        }
+
+        @keyframes successSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes successSlideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas flotantes -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Líneas de energía -->
+    <div class="energy-lines" id="energyLines"></div>
+    
+    <!-- Stars Animation -->
+    <div class="stars-container" id="starsContainer">
+        <div class="star-field" id="starField"></div>
+        <div class="shooting-stars" id="shootingStars"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo-container">
+                    <div class="logo">ZION</div>
+                    <div class="logo-subtitle">Marketing</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#reviews">Reseñas</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#contact">Contáctanos</a></li>
+                    <li><a href="#" onclick="openAdminPanel()">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    <span class="highlight">Transformamos</span><br>
+                    tu Negocio Digital
+                </h1>
+                <p>
+                    Somos la agencia de marketing que lleva tu empresa al siguiente nivel. 
+                    Estrategias innovadoras, resultados medibles y crecimiento garantizado.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">
+                        <i class="fas fa-phone"></i>
+                        Contáctanos
+                    </a>
+                    <a href="#services" class="btn btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        Ver Servicios
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Social Icons Vertical -->
+            <div class="hero-social">
+                <a href="https://instagram.com/krydev" target="_blank" class="hero-social-icon" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:krycoow@gmail.com" class="hero-social-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://linkedin.com/in/krydev" target="_blank" class="hero-social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/krycoow" target="_blank" class="hero-social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="scrollToContact()">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing Digital</h3>
+                    <p>Estrategias completas para aumentar tu presencia online y generar más ventas</p>
+                </div>
+                <div class="service-card" onclick="scrollToContact()">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Redes Sociales</h3>
+                    <p>Gestión profesional de tus redes sociales con contenido viral</p>
+                </div>
+                <div class="service-card" onclick="scrollToContact()">
+                    <i class="fas fa-code"></i>
+                    <h3>Desarrollo Web</h3>
+                    <p>Sitios web modernos, rápidos y optimizados para conversiones</p>
+                </div>
+                <div class="service-card" onclick="scrollToContact()">
+                    <i class="fas fa-ad"></i>
+                    <h3>Publicidad Online</h3>
+                    <p>Campañas publicitarias que maximizan tu ROI y generan resultados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">MG</div>
+                        <div class="review-info">
+                            <h4>María González</h4>
+                            <p>CEO, TechStart</p>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Increíble trabajo con nuestro marketing digital. Aumentamos las ventas un 300% en solo 3 meses. El equipo de Zion es simplemente excepcional."</p>
+                    </div>
+                    <div class="review-service">
+                        <span>Marketing Digital</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">CR</div>
+                        <div class="review-info">
+                            <h4>Carlos Ruiz</h4>
+                            <p>Fundador, FashionBrand</p>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Nuestras redes sociales nunca habían estado tan activas. Pasamos de 2k a 50k seguidores fieles en 6 meses. ¡Increíble!"</p>
+                    </div>
+                    <div class="review-service">
+                        <span>Redes Sociales</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">AM</div>
+                        <div class="review-info">
+                            <h4>Ana Martínez</h4>
+                            <p>Directora, ConsultoraPro</p>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                    <div class="review-content">
+                        <p>"El sitio web que nos desarrollaron es una obra de arte. Las conversiones aumentaron un 250% desde el primer día. ¡Altamente recomendado!"</p>
+                    </div>
+                    <div class="review-service">
+                        <span>Desarrollo Web</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">DL</div>
+                        <div class="review-info">
+                            <h4>David López</h4>
+                            <p>Gerente, RestauranteElite</p>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Las campañas publicitarias de Zion son increíbles. ROI del 400% en Google Ads y Facebook. Nuestro negocio se transformó completamente."</p>
+                    </div>
+                    <div class="review-service">
+                        <span>Publicidad Online</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">LS</div>
+                        <div class="review-info">
+                            <h4>Laura Sánchez</h4>
+                            <p>Propietaria, SpaRelax</p>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                    <div class="review-content">
+                        <p>"De 0 a 100 en marketing digital. Ahora somos el spa más reconocido de la ciudad. El equipo de Zion es simplemente el mejor."</p>
+                    </div>
+                    <div class="review-service">
+                        <span>Marketing Digital</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">RV</div>
+                        <div class="review-info">
+                            <h4>Roberto Vega</h4>
+                            <p>CEO, FitnessGym</p>
+                        </div>
+                        <div class="review-rating">★★★★★</div>
+                    </div>
+                    <div class="review-content">
+                        <p>"El sitio web que nos crearon es espectacular. Las membresías se triplicaron en 2 meses. ¡Zion Marketing es la clave del éxito!"</p>
+                    </div>
+                    <div class="review-service">
+                        <span>Desarrollo Web</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>¿Listo para transformar tu negocio?</h3>
+                    <p>Déjanos tus datos y te contactaremos por WhatsApp para una consulta gratuita.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+34 123 456 789</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@zionmarketing.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Madrid, España</span>
+                        </div>
+                    </div>
+                    <div class="whatsapp-info">
+                        <h4>💬 Te contactaremos por WhatsApp</h4>
+                        <p>Una vez que envíes el formulario, nos pondremos en contacto contigo por WhatsApp para resolver tus dudas y darte un presupuesto personalizado.</p>
+                    </div>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label>Nombre completo:</label>
+                        <input type="text" name="name" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Número de WhatsApp:</label>
+                        <input type="tel" name="phone" placeholder="+34 123 456 789" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email (opcional):</label>
+                        <input type="email" name="email" placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Qué servicio te interesa?</label>
+                        <select name="service" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="Marketing Digital">Marketing Digital</option>
+                            <option value="Redes Sociales">Redes Sociales</option>
+                            <option value="Desarrollo Web">Desarrollo Web</option>
+                            <option value="Publicidad Online">Publicidad Online</option>
+                            <option value="Consulta General">Consulta General</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Cuéntanos sobre tu proyecto:</label>
+                        <textarea name="message" placeholder="Describe brevemente tu proyecto o consulta" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Consulta
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ZION Marketing</h3>
+                    <p>Transformamos tu negocio digital con estrategias innovadoras y resultados garantizados.</p>
+                </div>
+                <div class="footer-credits">
+                    <p>Desarrollado y diseñado por <span class="krydev-credit">KryDev</span></p>
+                    <p>&copy; 2024 Zion Marketing Agency. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Client Chat Modal -->
+    <div id="clientChatModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeClientChat()">&times;</button>
+            <h2>Mi Chat</h2>
+            <div id="chatMessages">
+                <!-- Los mensajes se cargarán aquí dinámicamente -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Escribe tu mensaje...">
+                <button onclick="sendMessage()">Enviar</button>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <button class="btn btn-secondary" onclick="goToHome()">Volver a la Tienda</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeAdminModal()">&times;</button>
+            <h2>Panel de Administración</h2>
+            <div id="adminContent">
+                <p>Iniciando sesión...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div id="floatingChatBtn" class="floating-chat-btn" onclick="openClientChatFromFloating()">
+        <i class="fas fa-comments"></i>
+        <span class="chat-notification" id="chatNotification"></span>
+    </div>
+
+    <script>
+        // Manejar formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const contactData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                service: formData.get('service'),
+                message: formData.get('message'),
+                timestamp: new Date().toISOString()
+            };
+            
+            // Guardar en localStorage para el admin
+            let contacts = JSON.parse(localStorage.getItem('zion_contacts') || '[]');
+            contacts.push(contactData);
+            localStorage.setItem('zion_contacts', JSON.stringify(contacts));
+            
+            // Mostrar mensaje de éxito
+            showSuccessNotification('¡Gracias! Hemos recibido tu consulta. Te contactaremos pronto por WhatsApp.');
+            
+            // Limpiar formulario
+            e.target.reset();
+        });
+
+        // Funciones de chat
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            console.log('Enviando mensaje:', message);
+            
+            // Obtener mensajes existentes
+            const messages = JSON.parse(localStorage.getItem('zion_messages') || '[]');
+            
+            // Crear nuevo mensaje del cliente
+            const clientMessage = {
+                id: Date.now(),
+                sender: 'client',
+                message: message,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Añadir mensaje del cliente
+            messages.push(clientMessage);
+            
+            // Guardar en localStorage
+            localStorage.setItem('zion_messages', JSON.stringify(messages));
+            console.log('Mensaje guardado en localStorage:', messages);
+            
+            // Mostrar mensaje del cliente en el chat inmediatamente
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message client-message';
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    <strong>Tú:</strong> ${message}
+                </div>
+                <div class="message-time">${new Date().toLocaleTimeString()}</div>
+            `;
+            messagesDiv.appendChild(messageDiv);
+            
+            // Limpiar input
+            input.value = '';
+            
+            // Scroll al final
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            
+            // Simular respuesta del admin
+            setTimeout(() => {
+                const adminResponse = getAdminResponse(message);
+                console.log('Respuesta del admin:', adminResponse);
+                
+                // Crear mensaje del admin
+                const adminMessage = {
+                    id: Date.now() + 1,
+                    sender: 'admin',
+                    message: adminResponse,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Añadir mensaje del admin
+                messages.push(adminMessage);
+                localStorage.setItem('zion_messages', JSON.stringify(messages));
+                console.log('Respuesta guardada en localStorage:', messages);
+                
+                // Mostrar respuesta del admin en el chat
+                const adminMessageDiv = document.createElement('div');
+                adminMessageDiv.className = 'chat-message admin-message';
+                adminMessageDiv.innerHTML = `
+                    <div class="message-content">
+                        <strong>Zion Marketing:</strong> ${adminResponse}
+                    </div>
+                    <div class="message-time">${new Date().toLocaleTimeString()}</div>
+                `;
+                messagesDiv.appendChild(adminMessageDiv);
+                
+                // Scroll al final
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1500);
+        }
+
+        // Función para generar respuestas del admin
+        function getAdminResponse(clientMessage) {
+            const message = clientMessage.toLowerCase();
+            
+            if (message.includes('precio') || message.includes('costo') || message.includes('cuanto')) {
+                return 'Los precios varían según el servicio. Para Marketing Digital: desde €500/mes, Redes Sociales: desde €300/mes, Desarrollo Web: desde €800, Publicidad Online: desde €200/mes. ¿Te interesa algún servicio específico?';
+            } else if (message.includes('marketing digital')) {
+                return 'Nuestro servicio de Marketing Digital incluye SEO, SEM, email marketing, análisis de datos y estrategias personalizadas. ¿Te gustaría una consulta gratuita?';
+            } else if (message.includes('redes sociales')) {
+                return 'Gestionamos tus redes sociales con contenido creativo, community management, publicaciones programadas y análisis de engagement. ¿Qué plataformas te interesan?';
+            } else if (message.includes('desarrollo web')) {
+                return 'Desarrollamos sitios web modernos, responsivos y optimizados. Incluye diseño, programación, SEO y mantenimiento. ¿Tienes algún proyecto en mente?';
+            } else if (message.includes('publicidad')) {
+                return 'Creamos campañas efectivas en Google Ads, Facebook e Instagram. Optimizamos para maximizar tu ROI. ¿En qué plataforma quieres anunciarte?';
+            } else if (message.includes('tiempo') || message.includes('cuando')) {
+                return 'Los tiempos varían: Marketing Digital (1-2 semanas), Redes Sociales (inmediato), Desarrollo Web (2-4 semanas), Publicidad (24-48 horas). ¿Cuál es tu urgencia?';
+            } else {
+                return 'Gracias por tu consulta. Nuestro equipo se pondrá en contacto contigo pronto para darte una respuesta detallada. ¿Hay algo más en lo que podamos ayudarte?';
+            }
+        }
+
+        // Funciones de modales
+        function openClientChat() {
+            console.log('Abriendo chat desde navegación...');
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            console.log('Citas encontradas:', appointments);
+            if (appointments.length > 0) {
+                document.getElementById('clientChatModal').classList.add('active');
+                console.log('Modal activado, cargando mensajes...');
+                // Pequeño delay para asegurar que el modal esté visible
+                setTimeout(() => {
+                    loadChatMessages();
+                }, 100);
+            } else {
+                alert('Primero debes agendar una cita para acceder al chat.');
+            }
+        }
+
+        function openClientChatFromFloating() {
+            console.log('Abriendo chat desde botón flotante...');
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            console.log('Citas encontradas:', appointments);
+            if (appointments.length > 0) {
+                document.getElementById('clientChatModal').classList.add('active');
+                console.log('Modal activado, cargando mensajes...');
+                // Pequeño delay para asegurar que el modal esté visible
+                setTimeout(() => {
+                    loadChatMessages();
+                }, 100);
+            } else {
+                alert('Primero debes agendar una cita para acceder al chat.');
+            }
+        }
+
+        function closeClientChat() {
+            document.getElementById('clientChatModal').classList.remove('active');
+        }
+
+        function loadChatMessages() {
+            console.log('Cargando mensajes del chat...');
+            const messages = JSON.parse(localStorage.getItem('zion_messages') || '[]');
+            const messagesContainer = document.getElementById('chatMessages');
+            
+            console.log('Mensajes encontrados:', messages);
+            console.log('Container encontrado:', messagesContainer);
+            
+            if (!messagesContainer) {
+                console.error('No se encontró el contenedor de mensajes');
+                return;
+            }
+            
+            messagesContainer.innerHTML = '';
+            
+            // Siempre mostrar mensaje de bienvenida primero
+            const welcomeMessage = document.createElement('div');
+            welcomeMessage.className = 'chat-message admin-message';
+            welcomeMessage.innerHTML = `
+                <div class="message-content">
+                    <strong>Zion Marketing:</strong> ¡Hola! Gracias por agendar tu cita. 
+                    ¿En qué podemos ayudarte hoy? Puedes preguntarnos sobre nuestros servicios, 
+                    precios, o cualquier duda que tengas.
+                </div>
+            `;
+            messagesContainer.appendChild(welcomeMessage);
+            
+            // Mostrar todos los mensajes guardados
+            if (messages.length > 0) {
+                console.log('Mostrando mensajes guardados:', messages.length);
+                messages.forEach((message, index) => {
+                    console.log(`Cargando mensaje ${index}:`, message);
+                    const messageElement = document.createElement('div');
+                    messageElement.className = `chat-message ${message.sender === 'client' ? 'client-message' : 'admin-message'}`;
+                    messageElement.innerHTML = `
+                        <div class="message-content">
+                            <strong>${message.sender === 'client' ? 'Tú' : 'Zion Marketing'}:</strong> ${message.message}
+                        </div>
+                        <div class="message-time">${new Date(message.timestamp).toLocaleTimeString()}</div>
+                    `;
+                    messagesContainer.appendChild(messageElement);
+                });
+            }
+            
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            console.log('Mensajes cargados correctamente');
+        }
+
+        function openAdminPanel() {
+            document.getElementById('adminModal').classList.add('active');
+            showAppointments();
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.remove('active');
+        }
+
+        function goToHome() {
+            closeClientChat();
+            document.getElementById('home').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function showAppointments() {
+            // Cargar contactos desde localStorage
+            const contacts = JSON.parse(localStorage.getItem('zion_contacts') || '[]');
+            
+            let html = '<h3 style="color: #25D366; margin-bottom: 2rem; font-size: 2rem;">📱 Consultas Recibidas:</h3>';
+            
+            // Botones de administración
+            if (contacts.length > 0) {
+                html += `
+                    <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button onclick="clearAllContacts()" class="btn" style="background: linear-gradient(135deg, #ff8800 0%, #cc6600 100%); padding: 1rem 2rem; font-size: 1.1rem;">
+                            <i class="fas fa-trash"></i> Limpiar Todas las Consultas
+                        </button>
+                    </div>
+                `;
+            }
+            
+            if (contacts.length === 0) {
+                html += '<p style="color: #ccc; font-size: 1.2rem;">No hay consultas recibidas</p>';
+            } else {
+                contacts.forEach((contact, index) => {
+                    const phoneNumber = contact.phone.replace(/[^0-9]/g, '');
+                    html += `
+                        <div class="chat-message" style="margin-bottom: 2rem; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border: 1px solid rgba(37, 211, 102, 0.2); padding: 2rem; border-radius: 15px;">
+                            <strong style="color: #25D366; font-size: 1.3rem;">${contact.name}</strong><br>
+                            <small style="color: #ccc;">📞 ${contact.phone}</small><br>
+                            <small style="color: #ccc;">📧 ${contact.email || 'No proporcionado'}</small><br>
+                            <strong style="color: #00ff88;">Servicio:</strong> ${contact.service}<br>
+                            <strong style="color: #00ff88;">Mensaje:</strong> ${contact.message || 'Sin mensaje'}<br>
+                            <small style="color: #999;">📅 ${new Date(contact.timestamp).toLocaleString()}</small>
+                            <div style="margin-top: 1.5rem;">
+                                <a href="https://wa.me/${phoneNumber}" target="_blank" class="btn" style="background: linear-gradient(135deg, #25D366 0%, #128C7E 100%); padding: 0.8rem 1.5rem; font-size: 1rem; margin-right: 1rem; text-decoration: none;">
+                                    <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+                                </a>
+                                <button onclick="deleteContact(${index})" class="btn" style="background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); padding: 0.8rem 1.5rem; font-size: 1rem;">
+                                    <i class="fas fa-trash"></i> Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('adminContent').innerHTML = html;
+        }
+
+        function respondToClient(appointmentIndex) {
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            const appointment = appointments[appointmentIndex];
+            
+            if (!appointment) {
+                return;
+            }
+            
+            const response = prompt(`Escribe tu respuesta para ${appointment.name} (${appointment.email}):`);
+            if (response) {
+                // Guardar respuesta en localStorage (usar la misma clave que el chat del cliente)
+                let messages = JSON.parse(localStorage.getItem('zion_messages') || '[]');
+                messages.push({
+                    id: Date.now(),
+                    sender: 'admin',
+                    message: response,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('zion_messages', JSON.stringify(messages));
+                
+                // Mantener la vista del chat actualizada
+                viewClientChat(appointmentIndex);
+            }
+        }
+
+        function viewClientChat(appointmentIndex) {
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            const appointment = appointments[appointmentIndex];
+            
+            if (!appointment) {
+                return;
+            }
+            
+            // Mostrar chat del cliente (usar la misma clave que el chat del cliente)
+            const messages = JSON.parse(localStorage.getItem('zion_messages') || '[]');
+            const clientMessages = messages; // Mostrar todos los mensajes ya que solo hay un chat activo
+            
+            let chatHtml = `<h3>Chat con ${appointment.name}</h3>`;
+            chatHtml += `<p><strong>Email:</strong> ${appointment.email}</p>`;
+            chatHtml += `<p><strong>Servicio:</strong> ${appointment.service}</p><br>`;
+            
+            if (clientMessages.length === 0) {
+                chatHtml += '<p>No hay mensajes en este chat</p>';
+            } else {
+                clientMessages.forEach(msg => {
+                    const isClient = msg.sender === 'client';
+                    chatHtml += `
+                        <div style="margin: 1rem 0; padding: 1rem; background: ${isClient ? 'rgba(0, 255, 136, 0.1)' : 'rgba(0, 212, 255, 0.1)'}; border-radius: 10px; border-left: 4px solid ${isClient ? '#00ff88' : '#00d4ff'};">
+                            <strong>${isClient ? 'Cliente' : 'Admin'}:</strong> ${msg.message}<br>
+                            <small style="color: #999;">${new Date(msg.timestamp).toLocaleString()}</small>
+                        </div>
+                    `;
+                });
+            }
+            
+            // Añadir formulario para responder
+            chatHtml += `
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.1); border-radius: 10px;">
+                    <h4>Responder a este cliente:</h4>
+                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                        <input type="text" id="clientResponse" placeholder="Escribe tu respuesta..." style="flex: 1; padding: 0.8rem; border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 8px; background: rgba(0, 0, 0, 0.3); color: #fff;">
+                        <button onclick="sendClientResponse(${appointmentIndex})" class="btn">Enviar</button>
+                    </div>
+                </div>
+                <div style="margin-top: 1rem; text-align: center;">
+                    <button onclick="showAppointments()" class="btn" style="background: linear-gradient(135deg, #666 0%, #444 100%); padding: 0.8rem 1.5rem;">
+                        <i class="fas fa-arrow-left"></i> Volver a Citas
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('adminContent').innerHTML = chatHtml;
+            
+            // Hacer scroll hacia abajo para ver los mensajes más recientes
+            setTimeout(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+                
+                // Configurar Enter para enviar mensaje
+                const clientResponseInput = document.getElementById('clientResponse');
+                if (clientResponseInput) {
+                    clientResponseInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            sendClientResponse(appointmentIndex);
+                        }
+                    });
+                    clientResponseInput.focus(); // Hacer foco en el input
+                }
+            }, 100);
+        }
+
+        function sendClientResponse(appointmentIndex) {
+            const input = document.getElementById('clientResponse');
+            const message = input.value.trim();
+            
+            if (!message) {
+                return;
+            }
+            
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            const appointment = appointments[appointmentIndex];
+            
+            if (!appointment) {
+                return;
+            }
+            
+            // Guardar respuesta (usar la misma clave que el chat del cliente)
+            let messages = JSON.parse(localStorage.getItem('zion_messages') || '[]');
+            messages.push({
+                id: Date.now(),
+                sender: 'admin',
+                message: message,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('zion_messages', JSON.stringify(messages));
+            
+            input.value = '';
+            
+            // Mantener la vista del chat actualizada
+            viewClientChat(appointmentIndex);
+        }
+
+        function sendAdminResponse() {
+            const input = document.getElementById('adminResponse');
+            const message = input.value.trim();
+            
+            if (!message) {
+                return;
+            }
+            
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            
+            if (appointments.length === 0) {
+                return;
+            }
+            
+            // Enviar respuesta a todos los clientes (usar la misma clave que el chat del cliente)
+            let messages = JSON.parse(localStorage.getItem('zion_messages') || '[]');
+            
+            appointments.forEach(appointment => {
+                messages.push({
+                    id: Date.now() + Math.random(),
+                    sender: 'admin',
+                    message: message,
+                    timestamp: new Date().toISOString()
+                });
+            });
+            
+            localStorage.setItem('zion_messages', JSON.stringify(messages));
+            
+            input.value = '';
+            
+            // Actualizar la vista
+            showAppointments();
+        }
+
+        // Crear partículas flotantes
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 80;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Crear líneas de energía
+        function createEnergyLines() {
+            const energyContainer = document.getElementById('energyLines');
+            const lineCount = 5;
+
+            for (let i = 0; i < lineCount; i++) {
+                const line = document.createElement('div');
+                line.className = 'energy-line';
+                line.style.top = Math.random() * 100 + '%';
+                line.style.width = Math.random() * 200 + 100 + 'px';
+                line.style.animationDelay = Math.random() * 4 + 's';
+                line.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                energyContainer.appendChild(line);
+            }
+        }
+
+        // Event listeners
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Función para verificar citas y actualizar UI
+        function checkAppointments() {
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            const chatNavLink = document.getElementById('chatNavLink');
+            
+            if (appointments.length > 0 && chatNavLink) {
+                chatNavLink.style.display = 'block';
+            }
+            
+            updateFloatingChatButton();
+        }
+
+        // Función para cerrar un chat específico
+        function closeClientAppointment(index) {
+            showNotification('¿Cerrar este chat?', 'Esta acción no se puede deshacer', [
+                { text: 'No estoy seguro', action: () => hideNotification() },
+                { text: 'Sí, estoy seguro', action: () => {
+                    const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+                    appointments.splice(index, 1);
+                    localStorage.setItem('zion_appointments', JSON.stringify(appointments));
+                    
+                    // Limpiar mensajes del chat
+                    localStorage.removeItem('zion_messages');
+                    
+                    // Actualizar UI
+                    checkAppointments();
+                    showAppointments();
+                    
+                    hideNotification();
+                    showSuccessNotification('Chat cerrado correctamente');
+                }}
+            ]);
+        }
+
+        // Función para cerrar todos los chats
+        function closeAllChats() {
+            showNotification('¿Cerrar TODOS los chats?', 'Esta acción no se puede deshacer', [
+                { text: 'No estoy seguro', action: () => hideNotification() },
+                { text: 'Sí, estoy seguro', action: () => {
+                    localStorage.removeItem('zion_appointments');
+                    localStorage.removeItem('zion_messages');
+                    
+                    // Actualizar UI
+                    checkAppointments();
+                    showAppointments();
+                    
+                    hideNotification();
+                    showSuccessNotification('Todos los chats han sido cerrados');
+                }}
+            ]);
+        }
+
+        // Función para limpiar todas las citas
+        function clearAllAppointments() {
+            showNotification('¿ELIMINAR TODAS las citas?', 'Esta acción no se puede deshacer', [
+                { text: 'No estoy seguro', action: () => hideNotification() },
+                { text: 'Sí, estoy seguro', action: () => {
+                    localStorage.removeItem('zion_appointments');
+                    localStorage.removeItem('zion_messages');
+                    
+                    // Actualizar UI
+                    checkAppointments();
+                    showAppointments();
+                    
+                    hideNotification();
+                    showSuccessNotification('Todas las citas han sido eliminadas');
+                }}
+            ]);
+        }
+
+        function deleteContact(index) {
+            showNotification('¿ELIMINAR esta consulta?', 'Esta acción no se puede deshacer', [
+                { text: 'No estoy seguro', action: () => hideNotification() },
+                { text: 'Sí, estoy seguro', action: () => {
+                    let contacts = JSON.parse(localStorage.getItem('zion_contacts') || '[]');
+                    contacts.splice(index, 1);
+                    localStorage.setItem('zion_contacts', JSON.stringify(contacts));
+                    showAppointments();
+                    hideNotification();
+                    showSuccessNotification('Consulta eliminada');
+                }}
+            ]);
+        }
+
+        function clearAllContacts() {
+            showNotification('¿ELIMINAR TODAS las consultas?', 'Esta acción no se puede deshacer', [
+                { text: 'No estoy seguro', action: () => hideNotification() },
+                { text: 'Sí, estoy seguro', action: () => {
+                    localStorage.removeItem('zion_contacts');
+                    showAppointments();
+                    hideNotification();
+                    showSuccessNotification('Todas las consultas han sido eliminadas');
+                }}
+            ]);
+        }
+
+        // Función para mostrar/ocultar botón flotante
+        function updateFloatingChatButton() {
+            const appointments = JSON.parse(localStorage.getItem('zion_appointments') || '[]');
+            const floatingBtn = document.getElementById('floatingChatBtn');
+            
+            if (appointments.length > 0) {
+                floatingBtn.classList.add('show');
+            } else {
+                floatingBtn.classList.remove('show');
+            }
+        }
+
+        // Función para hacer scroll a la sección de contacto
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Función para crear estrellas
+        function createStars() {
+            const starField = document.getElementById('starField');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Tamaño aleatorio
+                const sizes = ['small', 'medium', 'large'];
+                const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+                star.classList.add(randomSize);
+                
+                // Posición aleatoria
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // Delay aleatorio para el parpadeo
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                // Añadir efecto parallax a algunas estrellas
+                if (Math.random() > 0.7) {
+                    star.classList.add('parallax');
+                    star.style.animationDelay = Math.random() * 4 + 's';
+                }
+                
+                starField.appendChild(star);
+            }
+        }
+
+        // Función para crear estrellas fugaces
+        function createShootingStar() {
+            const shootingStars = document.getElementById('shootingStars');
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+            
+            // Posición inicial aleatoria
+            const startX = Math.random() * window.innerWidth;
+            const startY = Math.random() * window.innerHeight * 0.3;
+            
+            shootingStar.style.left = startX + 'px';
+            shootingStar.style.top = startY + 'px';
+            
+            shootingStars.appendChild(shootingStar);
+            
+            // Animar
+            setTimeout(() => {
+                shootingStar.classList.add('animate');
+            }, 100);
+            
+            // Remover después de la animación
+            setTimeout(() => {
+                shootingStar.remove();
+            }, 3000);
+        }
+
+        // Función para actualizar estrellas basado en scroll
+        function updateStarsPosition() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const stars = document.querySelectorAll('.star');
+            
+            stars.forEach((star, index) => {
+                const speed = (index % 3 + 1) * 0.5; // Velocidades diferentes
+                const yPos = -(scrollTop * speed);
+                star.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        // Funciones de notificación
+        function showNotification(title, message, buttons) {
+            // Crear overlay
+            const overlay = document.createElement('div');
+            overlay.id = 'notificationOverlay';
+            overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+                backdrop-filter: blur(5px);
+            `;
+            
+            // Crear notificación
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+                border: 2px solid rgba(0, 212, 255, 0.3);
+                border-radius: 15px;
+                padding: 2rem;
+                max-width: 400px;
+                width: 90%;
+                text-align: center;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+                animation: notificationSlideIn 0.3s ease-out;
+            `;
+            
+            notification.innerHTML = `
+                <h3 style="color: #00d4ff; margin-bottom: 1rem; font-size: 1.5rem;">${title}</h3>
+                <p style="color: #ccc; margin-bottom: 2rem; font-size: 1.1rem;">${message}</p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    ${buttons.map(btn => `
+                        <button onclick="(${btn.action})()" style="
+                            padding: 0.8rem 1.5rem;
+                            border: none;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            ${btn.text === 'Sí, estoy seguro' ? 
+                                'background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%); color: white;' :
+                                'background: linear-gradient(135deg, #666 0%, #444 100%); color: white;'
+                            }
+                        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            ${btn.text}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+            
+            overlay.appendChild(notification);
+            document.body.appendChild(overlay);
+        }
+        
+        function hideNotification() {
+            const overlay = document.getElementById('notificationOverlay');
+            if (overlay) {
+                overlay.style.animation = 'notificationSlideOut 0.3s ease-in';
+                setTimeout(() => overlay.remove(), 300);
+            }
+        }
+        
+        function showSuccessNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 2rem;
+                right: 2rem;
+                background: linear-gradient(135deg, #00ff88 0%, #00cc66 100%);
+                color: #000;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 1.1rem;
+                z-index: 10001;
+                box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+                animation: successSlideIn 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'successSlideOut 0.3s ease-in';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Configurar evento Enter en el input del chat
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.getElementById('chatInput');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        });
+
+        // Inicializar efectos
+        createParticles();
+        createEnergyLines();
+        createStars();
+        checkAppointments();
+        
+        // Añadir event listener para scroll de las estrellas
+        window.addEventListener('scroll', updateStarsPosition);
+        
+        // Crear estrellas fugaces periódicamente
+        setInterval(createShootingStar, 3000);
+        
+        // Crear estrellas fugaces al cargar la página
+        setTimeout(() => {
+            createShootingStar();
+        }, 2000);
+    </script>
+</body>
+</html>
